@@ -3,7 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import HomeClient from '@/components/HomeClient'
 
 export default async function HomePage() {
-  const supabase = createClient()
+  const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   // If already logged in, show their groups
