@@ -3,10 +3,11 @@ import { createClient } from '@/lib/supabase/server'
 import GroupDashboard from '@/components/GroupDashboard'
 
 interface Props {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export default async function GroupPage({ params }: Props) {
+  const { id } = await params
   const supabase = createClient()
 
   // Auth guard
